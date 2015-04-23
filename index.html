@@ -1,1 +1,171 @@
-default
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stopping Distance for Cars</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Stopping Distance for Cars">
+  <meta name="author" content="Roger Surber">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Stopping Distance for Cars</h1>
+    <h2>We Make the Drive with Your Car More Secure</h2>
+    <p>Roger Surber<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Disclaimer</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This data examples are based on old data (year 1920) from a dataset in RStudio used for 
+demonstrations&#39; purpose only.</p>
+
+<p>Do not make any driving decisions based on this data!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Idea</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We use an advanced algorithm to keep a safe distance based on:</p>
+
+<ul>
+<li>speed of car</li>
+<li>weight</li>
+<li>temperature of street</li>
+<li>incline of street</li>
+<li>tyres</li>
+<li>airpressure of tyres</li>
+<li>and many other real-time data</li>
+</ul>
+
+<p>We estimate the stopping distance at any given moment
+of your car ride with this real-time input. 
+Combined with the device measuring the distance to the next car ahead of you 
+we calculate the appropriate and safe distance to the next car any given time 
+and adjust autonomously the speed at any given moment.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>At its Core (simplified)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">data(cars)
+#Calculate the model
+stoppingDistance &lt;- function(speed) {
+        fit &lt;- lm(dist ~ speed, data = cars)
+        new.speed &lt;- data.frame(speed)
+        round(predict(fit, newdata = new.speed), digits = 0)
+}
+#Use the speed of 15mph for the example
+speed &lt;- 15
+#Estimate the stopping distance based on the model
+stoppingDistance(speed)
+</code></pre>
+
+<pre><code>##  1 
+## 41
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Solution</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We show you just a hint on how we use intelligent algorithms to 
+determine the right variables for your safest possible journey with your car. </p>
+
+<p>As a result you get a safe distance to the car in front of you, considering the 
+whole context of your current situation.</p>
+
+<p>We innovate for your safety!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Disclaimer'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Idea'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='At its Core (simplified)'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Solution'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
